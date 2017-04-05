@@ -31,6 +31,12 @@ def create
   redirect_to groups_path
 end
 
+def destroy
+  @group = Group.find(params[:id])
+  @group.destroy
+    redirect_to groups_path, alert: "Group deleted"
+  end
+
 private
 def group_params
   params.require(:group).permit(:title, :description)
